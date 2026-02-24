@@ -20,11 +20,8 @@ Use the Ted Demo MCP Server to enable AI assistants to interact with this API, a
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:cjavdev/ted-demo-typescript.git
+npm install ted-demo
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install ted-demo`
 
 ## Usage
 
