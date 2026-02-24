@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stainless-sdks/ted-demo-typescript.git"
+    "url": "git+https://github.com/cjavdev/ted-demo-typescript.git"
   },
-  "homepage": "https://github.com/stainless-sdks/ted-demo-typescript/tree/main/packages/mcp-server#readme",
+  "homepage": "https://github.com/cjavdev/ted-demo-typescript/tree/main/packages/mcp-server#readme",
   "server": {
     "type": "node",
     "entry_point": "index.js",
