@@ -11,6 +11,7 @@ import {
   LogoUploadParams,
 } from './logo';
 import { APIPromise } from '../../core/api-promise';
+import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../../core/pagination';
 import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
@@ -71,14 +72,17 @@ export class Teams extends APIResource {
    *
    * @example
    * ```ts
-   * const teams = await client.teams.list();
+   * // Automatically fetches more pages as needed.
+   * for await (const team of client.teams.list()) {
+   *   // ...
+   * }
    * ```
    */
   list(
     query: TeamListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<TeamListResponse> {
-    return this._client.get('/teams', { query, ...options });
+  ): PagePromise<TeamsSkipLimitPage, Team> {
+    return this._client.getAPIList('/teams', SkipLimitPage<Team>, { query, ...options });
   }
 
   /**
@@ -132,6 +136,8 @@ export class Teams extends APIResource {
     return this._client.get(path`/teams/${teamID}/logos`, options);
   }
 }
+
+export type TeamsSkipLimitPage = SkipLimitPage<Team>;
 
 /**
  * Geographic coordinates for a location.
@@ -276,31 +282,6 @@ export interface TeamValues {
   team_motto: string;
 }
 
-export interface TeamListResponse {
-  data: Array<Team>;
-
-  /**
-   * Whether there are more items after this page.
-   */
-  has_more: boolean;
-
-  limit: number;
-
-  /**
-   * Current page number (1-indexed, for display purposes).
-   */
-  page: number;
-
-  /**
-   * Total number of pages.
-   */
-  pages: number;
-
-  skip: number;
-
-  total: number;
-}
-
 export type TeamGetCultureResponse = { [key: string]: unknown };
 
 export type TeamGetRivalsResponse = Array<Team>;
@@ -439,26 +420,16 @@ export interface TeamUpdateParams {
   win_percentage?: number | null;
 }
 
-export interface TeamListParams {
+export interface TeamListParams extends SkipLimitPageParams {
   /**
    * Filter by league
    */
   league?: League | null;
 
   /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
-
-  /**
    * Minimum culture score
    */
   min_culture_score?: number | null;
-
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
 }
 
 Teams.Logo = Logo;
@@ -469,10 +440,10 @@ export declare namespace Teams {
     type League as League,
     type Team as Team,
     type TeamValues as TeamValues,
-    type TeamListResponse as TeamListResponse,
     type TeamGetCultureResponse as TeamGetCultureResponse,
     type TeamGetRivalsResponse as TeamGetRivalsResponse,
     type TeamListLogosResponse as TeamListLogosResponse,
+    type TeamsSkipLimitPage as TeamsSkipLimitPage,
     type TeamCreateParams as TeamCreateParams,
     type TeamUpdateParams as TeamUpdateParams,
     type TeamListParams as TeamListParams,

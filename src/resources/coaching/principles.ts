@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import { APIPromise } from '../../core/api-promise';
+import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../../core/pagination';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
@@ -24,14 +25,20 @@ export class Principles extends APIResource {
    *
    * @example
    * ```ts
-   * const principles = await client.coaching.principles.list();
+   * // Automatically fetches more pages as needed.
+   * for await (const coachingPrinciple of client.coaching.principles.list()) {
+   *   // ...
+   * }
    * ```
    */
   list(
     query: PrincipleListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<PrincipleListResponse> {
-    return this._client.get('/coaching/principles', { query, ...options });
+  ): PagePromise<CoachingPrinciplesSkipLimitPage, CoachingPrinciple> {
+    return this._client.getAPIList('/coaching/principles', SkipLimitPage<CoachingPrinciple>, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -47,6 +54,8 @@ export class Principles extends APIResource {
     return this._client.get('/coaching/principles/random', options);
   }
 }
+
+export type CoachingPrinciplesSkipLimitPage = SkipLimitPage<CoachingPrinciple>;
 
 /**
  * A Ted Lasso coaching principle.
@@ -83,47 +92,12 @@ export interface CoachingPrinciple {
   ted_quote: string;
 }
 
-export interface PrincipleListResponse {
-  data: Array<CoachingPrinciple>;
-
-  /**
-   * Whether there are more items after this page.
-   */
-  has_more: boolean;
-
-  limit: number;
-
-  /**
-   * Current page number (1-indexed, for display purposes).
-   */
-  page: number;
-
-  /**
-   * Total number of pages.
-   */
-  pages: number;
-
-  skip: number;
-
-  total: number;
-}
-
-export interface PrincipleListParams {
-  /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
-
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
-}
+export interface PrincipleListParams extends SkipLimitPageParams {}
 
 export declare namespace Principles {
   export {
     type CoachingPrinciple as CoachingPrinciple,
-    type PrincipleListResponse as PrincipleListResponse,
+    type CoachingPrinciplesSkipLimitPage as CoachingPrinciplesSkipLimitPage,
     type PrincipleListParams as PrincipleListParams,
   };
 }

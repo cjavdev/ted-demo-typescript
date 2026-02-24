@@ -2,6 +2,7 @@
 
 import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
+import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../core/pagination';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -71,14 +72,17 @@ export class Episodes extends APIResource {
    *
    * @example
    * ```ts
-   * const episodes = await client.episodes.list();
+   * // Automatically fetches more pages as needed.
+   * for await (const episode of client.episodes.list()) {
+   *   // ...
+   * }
    * ```
    */
   list(
     query: EpisodeListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<EpisodeListResponse> {
-    return this._client.get('/episodes', { query, ...options });
+  ): PagePromise<EpisodesSkipLimitPage, Episode> {
+    return this._client.getAPIList('/episodes', SkipLimitPage<Episode>, { query, ...options });
   }
 
   /**
@@ -110,6 +114,8 @@ export class Episodes extends APIResource {
     return this._client.get(path`/episodes/${episodeID}/wisdom`, options);
   }
 }
+
+export type EpisodesSkipLimitPage = SkipLimitPage<Episode>;
 
 /**
  * Full episode model with ID.
@@ -194,31 +200,6 @@ export interface Episode {
    * Viewer rating out of 10
    */
   viewer_rating?: number | null;
-}
-
-export interface EpisodeListResponse {
-  data: Array<Episode>;
-
-  /**
-   * Whether there are more items after this page.
-   */
-  has_more: boolean;
-
-  limit: number;
-
-  /**
-   * Current page number (1-indexed, for display purposes).
-   */
-  page: number;
-
-  /**
-   * Total number of pages.
-   */
-  pages: number;
-
-  skip: number;
-
-  total: number;
 }
 
 export type EpisodeGetWisdomResponse = { [key: string]: unknown };
@@ -332,33 +313,23 @@ export interface EpisodeUpdateParams {
   writer?: string | null;
 }
 
-export interface EpisodeListParams {
+export interface EpisodeListParams extends SkipLimitPageParams {
   /**
    * Filter by character focus (character ID)
    */
   character_focus?: string | null;
 
   /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
-
-  /**
    * Filter by season
    */
   season?: number | null;
-
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
 }
 
 export declare namespace Episodes {
   export {
     type Episode as Episode,
-    type EpisodeListResponse as EpisodeListResponse,
     type EpisodeGetWisdomResponse as EpisodeGetWisdomResponse,
+    type EpisodesSkipLimitPage as EpisodesSkipLimitPage,
     type EpisodeCreateParams as EpisodeCreateParams,
     type EpisodeUpdateParams as EpisodeUpdateParams,
     type EpisodeListParams as EpisodeListParams,

@@ -163,6 +163,37 @@ On timeout, an `APIConnectionTimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
 
+## Auto-pagination
+
+List methods in the TedDemo API are paginated.
+You can use the `for await … of` syntax to iterate through items across all pages:
+
+```ts
+async function fetchAllBiscuits(params) {
+  const allBiscuits = [];
+  // Automatically fetches more pages as needed.
+  for await (const biscuit of client.biscuits.list()) {
+    allBiscuits.push(biscuit);
+  }
+  return allBiscuits;
+}
+```
+
+Alternatively, you can request a single page at a time:
+
+```ts
+let page = await client.biscuits.list();
+for (const biscuit of page.data) {
+  console.log(biscuit);
+}
+
+// Convenience methods are provided for manually paginating:
+while (page.hasNextPage()) {
+  page = await page.getNextPage();
+  // ...
+}
+```
+
 ## Advanced Usage
 
 ### Accessing raw Response data (e.g., headers)

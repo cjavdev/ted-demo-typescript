@@ -2,6 +2,7 @@
 
 import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
+import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../core/pagination';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -70,14 +71,17 @@ export class Characters extends APIResource {
    *
    * @example
    * ```ts
-   * const characters = await client.characters.list();
+   * // Automatically fetches more pages as needed.
+   * for await (const character of client.characters.list()) {
+   *   // ...
+   * }
    * ```
    */
   list(
     query: CharacterListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<CharacterListResponse> {
-    return this._client.get('/characters', { query, ...options });
+  ): PagePromise<CharactersSkipLimitPage, Character> {
+    return this._client.getAPIList('/characters', SkipLimitPage<Character>, { query, ...options });
   }
 
   /**
@@ -109,6 +113,8 @@ export class Characters extends APIResource {
     return this._client.get(path`/characters/${characterID}/quotes`, options);
   }
 }
+
+export type CharactersSkipLimitPage = SkipLimitPage<Character>;
 
 /**
  * Full character model with ID.
@@ -260,31 +266,6 @@ export interface GrowthArc {
   starting_point: string;
 }
 
-export interface CharacterListResponse {
-  data: Array<Character>;
-
-  /**
-   * Whether there are more items after this page.
-   */
-  has_more: boolean;
-
-  limit: number;
-
-  /**
-   * Current page number (1-indexed, for display purposes).
-   */
-  page: number;
-
-  /**
-   * Total number of pages.
-   */
-  pages: number;
-
-  skip: number;
-
-  total: number;
-}
-
 export type CharacterGetQuotesResponse = Array<string>;
 
 export interface CharacterCreateParams {
@@ -388,12 +369,7 @@ export interface CharacterUpdateParams {
   team_id?: string | null;
 }
 
-export interface CharacterListParams {
-  /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
-
+export interface CharacterListParams extends SkipLimitPageParams {
   /**
    * Minimum optimism score
    */
@@ -403,11 +379,6 @@ export interface CharacterListParams {
    * Filter by role
    */
   role?: CharacterRole | null;
-
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
 
   /**
    * Filter by team ID
@@ -421,8 +392,8 @@ export declare namespace Characters {
     type CharacterRole as CharacterRole,
     type EmotionalStats as EmotionalStats,
     type GrowthArc as GrowthArc,
-    type CharacterListResponse as CharacterListResponse,
     type CharacterGetQuotesResponse as CharacterGetQuotesResponse,
+    type CharactersSkipLimitPage as CharactersSkipLimitPage,
     type CharacterCreateParams as CharacterCreateParams,
     type CharacterUpdateParams as CharacterUpdateParams,
     type CharacterListParams as CharacterListParams,

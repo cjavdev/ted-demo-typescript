@@ -4,6 +4,6 @@ export { Coaching } from './coaching';
 export {
   Principles,
   type CoachingPrinciple,
-  type PrincipleListResponse,
   type PrincipleListParams,
+  type CoachingPrinciplesSkipLimitPage,
 } from './principles';
