@@ -14,11 +14,11 @@ export {
   type League,
   type Team,
   type TeamValues,
-  type TeamListResponse,
   type TeamGetCultureResponse,
   type TeamGetRivalsResponse,
   type TeamListLogosResponse,
   type TeamCreateParams,
   type TeamUpdateParams,
   type TeamListParams,
+  type TeamsSkipLimitPage,
 } from './teams';

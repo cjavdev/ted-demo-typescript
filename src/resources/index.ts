@@ -1,29 +1,29 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export { Believe, type BelieveSubmitResponse, type BelieveSubmitParams } from './believe';
-export { Biscuits, type Biscuit, type BiscuitListResponse, type BiscuitListParams } from './biscuits';
+export { Biscuits, type Biscuit, type BiscuitListParams, type BiscuitsSkipLimitPage } from './biscuits';
 export {
   Characters,
   type Character,
   type CharacterRole,
   type EmotionalStats,
   type GrowthArc,
-  type CharacterListResponse,
   type CharacterGetQuotesResponse,
   type CharacterCreateParams,
   type CharacterUpdateParams,
   type CharacterListParams,
+  type CharactersSkipLimitPage,
 } from './characters';
 export { Coaching } from './coaching/coaching';
 export { Conflicts, type ConflictResolveResponse, type ConflictResolveParams } from './conflicts';
 export {
   Episodes,
   type Episode,
-  type EpisodeListResponse,
   type EpisodeGetWisdomResponse,
   type EpisodeCreateParams,
   type EpisodeUpdateParams,
   type EpisodeListParams,
+  type EpisodesSkipLimitPage,
 } from './episodes';
 export { Health, type HealthCheckResponse } from './health';
 export {
@@ -32,13 +32,13 @@ export {
   type MatchResult,
   type MatchType,
   type TurningPoint,
-  type MatchListResponse,
   type MatchGetLessonResponse,
   type MatchGetTurningPointsResponse,
   type MatchCreateParams,
   type MatchUpdateParams,
   type MatchListParams,
   type MatchStreamLiveSimulationParams,
+  type MatchesSkipLimitPage,
 } from './matches/matches';
 export { PepTalk, type PepTalkRetrieveResponse, type PepTalkRetrieveParams } from './pep-talk';
 export { Press, type PressSimulateResponse, type PressSimulateParams } from './press';
@@ -54,6 +54,7 @@ export {
   type QuoteGetRandomParams,
   type QuoteListByCharacterParams,
   type QuoteListByThemeParams,
+  type QuotesSkipLimitPage,
 } from './quotes';
 export {
   Reframe,
@@ -74,8 +75,6 @@ export {
   type TeamMemberRetrieveResponse,
   type TeamMemberUpdateResponse,
   type TeamMemberListResponse,
-  type TeamMemberListCoachesResponse,
-  type TeamMemberListPlayersResponse,
   type TeamMemberListStaffResponse,
   type TeamMemberCreateParams,
   type TeamMemberUpdateParams,
@@ -83,6 +82,10 @@ export {
   type TeamMemberListCoachesParams,
   type TeamMemberListPlayersParams,
   type TeamMemberListStaffParams,
+  type TeamMemberListResponsesSkipLimitPage,
+  type CoachesSkipLimitPage,
+  type PlayersSkipLimitPage,
+  type TeamMemberListStaffResponsesSkipLimitPage,
 } from './team-members';
 export {
   Teams,
@@ -90,13 +93,13 @@ export {
   type League,
   type Team,
   type TeamValues,
-  type TeamListResponse,
   type TeamGetCultureResponse,
   type TeamGetRivalsResponse,
   type TeamListLogosResponse,
   type TeamCreateParams,
   type TeamUpdateParams,
   type TeamListParams,
+  type TeamsSkipLimitPage,
 } from './teams/teams';
 export { Version, type VersionRetrieveResponse } from './version';
 export {

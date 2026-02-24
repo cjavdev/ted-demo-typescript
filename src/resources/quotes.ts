@@ -2,6 +2,7 @@
 
 import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
+import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../core/pagination';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -55,14 +56,17 @@ export class Quotes extends APIResource {
    *
    * @example
    * ```ts
-   * const paginatedResponseQuote = await client.quotes.list();
+   * // Automatically fetches more pages as needed.
+   * for await (const quote of client.quotes.list()) {
+   *   // ...
+   * }
    * ```
    */
   list(
     query: QuoteListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<PaginatedResponseQuote> {
-    return this._client.get('/quotes', { query, ...options });
+  ): PagePromise<QuotesSkipLimitPage, Quote> {
+    return this._client.getAPIList('/quotes', SkipLimitPage<Quote>, { query, ...options });
   }
 
   /**
@@ -100,16 +104,23 @@ export class Quotes extends APIResource {
    *
    * @example
    * ```ts
-   * const paginatedResponseQuote =
-   *   await client.quotes.listByCharacter('character_id');
+   * // Automatically fetches more pages as needed.
+   * for await (const quote of client.quotes.listByCharacter(
+   *   'character_id',
+   * )) {
+   *   // ...
+   * }
    * ```
    */
   listByCharacter(
     characterID: string,
     query: QuoteListByCharacterParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<PaginatedResponseQuote> {
-    return this._client.get(path`/quotes/characters/${characterID}`, { query, ...options });
+  ): PagePromise<QuotesSkipLimitPage, Quote> {
+    return this._client.getAPIList(path`/quotes/characters/${characterID}`, SkipLimitPage<Quote>, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -117,18 +128,27 @@ export class Quotes extends APIResource {
    *
    * @example
    * ```ts
-   * const paginatedResponseQuote =
-   *   await client.quotes.listByTheme('belief');
+   * // Automatically fetches more pages as needed.
+   * for await (const quote of client.quotes.listByTheme(
+   *   'belief',
+   * )) {
+   *   // ...
+   * }
    * ```
    */
   listByTheme(
     theme: QuoteTheme,
     query: QuoteListByThemeParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<PaginatedResponseQuote> {
-    return this._client.get(path`/quotes/themes/${theme}`, { query, ...options });
+  ): PagePromise<QuotesSkipLimitPage, Quote> {
+    return this._client.getAPIList(path`/quotes/themes/${theme}`, SkipLimitPage<Quote>, {
+      query,
+      ...options,
+    });
   }
 }
+
+export type QuotesSkipLimitPage = SkipLimitPage<Quote>;
 
 export interface PaginatedResponseQuote {
   data: Array<Quote>;
@@ -355,7 +375,7 @@ export interface QuoteUpdateParams {
   times_shared?: number | null;
 }
 
-export interface QuoteListParams {
+export interface QuoteListParams extends SkipLimitPageParams {
   /**
    * Filter by character
    */
@@ -372,19 +392,9 @@ export interface QuoteListParams {
   inspirational?: boolean | null;
 
   /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
-
-  /**
    * Filter by moment type
    */
   moment_type?: QuoteMoment | null;
-
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
 
   /**
    * Filter by theme
@@ -409,29 +419,9 @@ export interface QuoteGetRandomParams {
   theme?: QuoteTheme | null;
 }
 
-export interface QuoteListByCharacterParams {
-  /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
+export interface QuoteListByCharacterParams extends SkipLimitPageParams {}
 
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
-}
-
-export interface QuoteListByThemeParams {
-  /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
-
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
-}
+export interface QuoteListByThemeParams extends SkipLimitPageParams {}
 
 export declare namespace Quotes {
   export {
@@ -439,6 +429,7 @@ export declare namespace Quotes {
     type Quote as Quote,
     type QuoteMoment as QuoteMoment,
     type QuoteTheme as QuoteTheme,
+    type QuotesSkipLimitPage as QuotesSkipLimitPage,
     type QuoteCreateParams as QuoteCreateParams,
     type QuoteUpdateParams as QuoteUpdateParams,
     type QuoteListParams as QuoteListParams,

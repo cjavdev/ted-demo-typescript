@@ -4,6 +4,7 @@ import { APIResource } from '../../core/resource';
 import * as CommentaryAPI from './commentary';
 import { Commentary, CommentaryStreamResponse } from './commentary';
 import { APIPromise } from '../../core/api-promise';
+import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../../core/pagination';
 import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
@@ -57,14 +58,17 @@ export class Matches extends APIResource {
    *
    * @example
    * ```ts
-   * const matches = await client.matches.list();
+   * // Automatically fetches more pages as needed.
+   * for await (const match of client.matches.list()) {
+   *   // ...
+   * }
    * ```
    */
   list(
     query: MatchListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<MatchListResponse> {
-    return this._client.get('/matches', { query, ...options });
+  ): PagePromise<MatchesSkipLimitPage, Match> {
+    return this._client.getAPIList('/matches', SkipLimitPage<Match>, { query, ...options });
   }
 
   /**
@@ -161,6 +165,8 @@ export class Matches extends APIResource {
     });
   }
 }
+
+export type MatchesSkipLimitPage = SkipLimitPage<Match>;
 
 /**
  * Full match model with ID.
@@ -282,31 +288,6 @@ export interface TurningPoint {
   character_involved?: string | null;
 }
 
-export interface MatchListResponse {
-  data: Array<Match>;
-
-  /**
-   * Whether there are more items after this page.
-   */
-  has_more: boolean;
-
-  limit: number;
-
-  /**
-   * Current page number (1-indexed, for display purposes).
-   */
-  page: number;
-
-  /**
-   * Total number of pages.
-   */
-  pages: number;
-
-  skip: number;
-
-  total: number;
-}
-
 export type MatchGetLessonResponse = { [key: string]: unknown };
 
 export type MatchGetTurningPointsResponse = Array<{ [key: string]: unknown }>;
@@ -426,12 +407,7 @@ export interface MatchUpdateParams {
   weather_temp_celsius?: number | null;
 }
 
-export interface MatchListParams {
-  /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
-
+export interface MatchListParams extends SkipLimitPageParams {
   /**
    * Filter by match type
    */
@@ -441,11 +417,6 @@ export interface MatchListParams {
    * Filter by result
    */
   result?: MatchResult | null;
-
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
 
   /**
    * Filter by team (home or away)
@@ -483,9 +454,9 @@ export declare namespace Matches {
     type MatchResult as MatchResult,
     type MatchType as MatchType,
     type TurningPoint as TurningPoint,
-    type MatchListResponse as MatchListResponse,
     type MatchGetLessonResponse as MatchGetLessonResponse,
     type MatchGetTurningPointsResponse as MatchGetTurningPointsResponse,
+    type MatchesSkipLimitPage as MatchesSkipLimitPage,
     type MatchCreateParams as MatchCreateParams,
     type MatchUpdateParams as MatchUpdateParams,
     type MatchListParams as MatchListParams,

@@ -2,7 +2,12 @@
 
 import { APIResource } from '../../core/resource';
 import * as PrinciplesAPI from './principles';
-import { CoachingPrinciple, PrincipleListParams, PrincipleListResponse, Principles } from './principles';
+import {
+  CoachingPrinciple,
+  CoachingPrinciplesSkipLimitPage,
+  PrincipleListParams,
+  Principles,
+} from './principles';
 
 export class Coaching extends APIResource {
   principles: PrinciplesAPI.Principles = new PrinciplesAPI.Principles(this._client);
@@ -14,7 +19,7 @@ export declare namespace Coaching {
   export {
     Principles as Principles,
     type CoachingPrinciple as CoachingPrinciple,
-    type PrincipleListResponse as PrincipleListResponse,
+    type CoachingPrinciplesSkipLimitPage as CoachingPrinciplesSkipLimitPage,
     type PrincipleListParams as PrincipleListParams,
   };
 }

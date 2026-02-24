@@ -2,6 +2,7 @@
 
 import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
+import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
@@ -26,14 +27,17 @@ export class Biscuits extends APIResource {
    *
    * @example
    * ```ts
-   * const biscuits = await client.biscuits.list();
+   * // Automatically fetches more pages as needed.
+   * for await (const biscuit of client.biscuits.list()) {
+   *   // ...
+   * }
    * ```
    */
   list(
     query: BiscuitListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<BiscuitListResponse> {
-    return this._client.get('/biscuits', { query, ...options });
+  ): PagePromise<BiscuitsSkipLimitPage, Biscuit> {
+    return this._client.getAPIList('/biscuits', SkipLimitPage<Biscuit>, { query, ...options });
   }
 
   /**
@@ -48,6 +52,8 @@ export class Biscuits extends APIResource {
     return this._client.get('/biscuits/fresh', options);
   }
 }
+
+export type BiscuitsSkipLimitPage = SkipLimitPage<Biscuit>;
 
 /**
  * A biscuit from Ted.
@@ -84,47 +90,12 @@ export interface Biscuit {
   warmth_level: number;
 }
 
-export interface BiscuitListResponse {
-  data: Array<Biscuit>;
-
-  /**
-   * Whether there are more items after this page.
-   */
-  has_more: boolean;
-
-  limit: number;
-
-  /**
-   * Current page number (1-indexed, for display purposes).
-   */
-  page: number;
-
-  /**
-   * Total number of pages.
-   */
-  pages: number;
-
-  skip: number;
-
-  total: number;
-}
-
-export interface BiscuitListParams {
-  /**
-   * Maximum number of items to return (max: 100)
-   */
-  limit?: number;
-
-  /**
-   * Number of items to skip (offset)
-   */
-  skip?: number;
-}
+export interface BiscuitListParams extends SkipLimitPageParams {}
 
 export declare namespace Biscuits {
   export {
     type Biscuit as Biscuit,
-    type BiscuitListResponse as BiscuitListResponse,
+    type BiscuitsSkipLimitPage as BiscuitsSkipLimitPage,
     type BiscuitListParams as BiscuitListParams,
   };
 }

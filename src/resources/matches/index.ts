@@ -7,11 +7,11 @@ export {
   type MatchResult,
   type MatchType,
   type TurningPoint,
-  type MatchListResponse,
   type MatchGetLessonResponse,
   type MatchGetTurningPointsResponse,
   type MatchCreateParams,
   type MatchUpdateParams,
   type MatchListParams,
   type MatchStreamLiveSimulationParams,
+  type MatchesSkipLimitPage,
 } from './matches';
