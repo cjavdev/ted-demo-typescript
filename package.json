@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:stainless-sdks/ted-demo-typescript",
+  "repository": "github:cjavdev/ted-demo-typescript",
   "license": "MIT",
   "packageManager": "pnpm@10.30.1",
   "files": [
