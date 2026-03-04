@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Register webhook endpoints and trigger events for testing
+ */
 export class Webhooks extends APIResource {
   /**
    * Register a new webhook endpoint to receive event notifications.

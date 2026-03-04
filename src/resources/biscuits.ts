@@ -6,6 +6,9 @@ import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../core/pa
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Interactive endpoints for motivation and guidance
+ */
 export class Biscuits extends APIResource {
   /**
    * Get a specific type of biscuit by ID.

@@ -6,6 +6,9 @@ import { PagePromise, SkipLimitPage, type SkipLimitPageParams } from '../../core
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Interactive endpoints for motivation and guidance
+ */
 export class Principles extends APIResource {
   /**
    * Get details about a specific coaching principle.

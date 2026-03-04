@@ -863,23 +863,65 @@ export class TedDemo {
 
   static toFile = Uploads.toFile;
 
+  /**
+   * Interactive endpoints for motivation and guidance
+   */
   believe: API.Believe = new API.Believe(this);
+  /**
+   * Interactive endpoints for motivation and guidance
+   */
   biscuits: API.Biscuits = new API.Biscuits(this);
+  /**
+   * Operations related to Ted Lasso characters
+   */
   characters: API.Characters = new API.Characters(this);
   coaching: API.Coaching = new API.Coaching(this);
+  /**
+   * Interactive endpoints for motivation and guidance
+   */
   conflicts: API.Conflicts = new API.Conflicts(this);
+  /**
+   * Operations related to TV episodes
+   */
   episodes: API.Episodes = new API.Episodes(this);
   health: API.Health = new API.Health(this);
   matches: API.Matches = new API.Matches(this);
+  /**
+   * Server-Sent Events (SSE) streaming endpoints
+   */
   pepTalk: API.PepTalk = new API.PepTalk(this);
+  /**
+   * Interactive endpoints for motivation and guidance
+   */
   press: API.Press = new API.Press(this);
+  /**
+   * Memorable quotes from the show
+   */
   quotes: API.Quotes = new API.Quotes(this);
+  /**
+   * Interactive endpoints for motivation and guidance
+   */
   reframe: API.Reframe = new API.Reframe(this);
+  /**
+   * Server-Sent Events (SSE) streaming endpoints
+   */
   stream: API.Stream = new API.Stream(this);
+  /**
+   * Team members with union types (oneOf) - Players, Coaches, Medical Staff, Equipment Managers
+   */
   teamMembers: API.TeamMembers = new API.TeamMembers(this);
+  /**
+   * Operations related to football teams
+   */
   teams: API.Teams = new API.Teams(this);
   version: API.Version = new API.Version(this);
+  /**
+   * Register webhook endpoints and trigger events for testing
+   */
   webhooks: API.Webhooks = new API.Webhooks(this);
+  /**
+   * WebSocket endpoints for real-time bidirectional communication - Live match simulation
+   */
   ws: API.Ws = new API.Ws(this);
 }
 

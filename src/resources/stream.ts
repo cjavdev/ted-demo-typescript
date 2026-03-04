@@ -4,6 +4,9 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Server-Sent Events (SSE) streaming endpoints
+ */
 export class Stream extends APIResource {
   /**
    * A simple SSE test endpoint that streams numbers 1-5.

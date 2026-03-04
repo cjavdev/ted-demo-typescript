@@ -4,6 +4,9 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Server-Sent Events (SSE) streaming endpoints
+ */
 export class PepTalk extends APIResource {
   /**
    * Get a motivational pep talk from Ted Lasso himself. By default returns the

@@ -16,6 +16,9 @@ import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Operations related to football teams
+ */
 export class Teams extends APIResource {
   logo: LogoAPI.Logo = new LogoAPI.Logo(this._client);
 
