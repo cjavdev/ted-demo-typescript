@@ -5,6 +5,9 @@ import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Server-Sent Events (SSE) streaming endpoints
+ */
 export class Commentary extends APIResource {
   /**
    * Stream live match commentary for a specific match. Uses Server-Sent Events (SSE)

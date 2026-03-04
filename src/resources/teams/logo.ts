@@ -8,6 +8,9 @@ import { RequestOptions } from '../../internal/request-options';
 import { multipartFormRequestOptions } from '../../internal/uploads';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Operations related to football teams
+ */
 export class Logo extends APIResource {
   /**
    * Delete a team's logo.

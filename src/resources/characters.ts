@@ -7,6 +7,9 @@ import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Operations related to Ted Lasso characters
+ */
 export class Characters extends APIResource {
   /**
    * Add a new character to the Ted Lasso universe.

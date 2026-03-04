@@ -7,6 +7,9 @@ import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Operations related to TV episodes
+ */
 export class Episodes extends APIResource {
   /**
    * Add a new episode to the series.
