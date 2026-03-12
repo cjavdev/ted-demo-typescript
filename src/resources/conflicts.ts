@@ -4,6 +4,9 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Interactive endpoints for motivation and guidance
+ */
 export class Conflicts extends APIResource {
   /**
    * Get Ted Lasso-style advice for resolving conflicts.

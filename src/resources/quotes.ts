@@ -7,6 +7,9 @@ import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Memorable quotes from the show
+ */
 export class Quotes extends APIResource {
   /**
    * Add a new memorable quote to the collection.

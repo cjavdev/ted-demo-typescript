@@ -4,6 +4,9 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Interactive endpoints for motivation and guidance
+ */
 export class Reframe extends APIResource {
   /**
    * Transform negative thoughts into positive perspectives with Ted's help.

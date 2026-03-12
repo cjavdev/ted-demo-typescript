@@ -7,6 +7,9 @@ import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Team members with union types (oneOf) - Players, Coaches, Medical Staff, Equipment Managers
+ */
 export class TeamMembers extends APIResource {
   /**
    * Add a new team member to a team.

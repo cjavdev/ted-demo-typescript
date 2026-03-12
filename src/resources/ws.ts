@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * WebSocket endpoints for real-time bidirectional communication - Live match simulation
+ */
 export class Ws extends APIResource {
   /**
    * Simple WebSocket test endpoint for connectivity testing.
