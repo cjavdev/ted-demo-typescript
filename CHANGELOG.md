@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1 (2026-03-14)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/cjavdev/ted-demo-typescript/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* **internal:** make generated MCP servers compatible with Cloudflare worker environments ([8c27022](https://github.com/cjavdev/ted-demo-typescript/commit/8c2702250168973c7b37cf65d900e1d31df52eac))
+* **internal:** support x-stainless-mcp-client-envs header in MCP servers ([d7e409b](https://github.com/cjavdev/ted-demo-typescript/commit/d7e409b84dc223f28ddfe4443566b848c1af42a7))
+* **internal:** update lockfile ([e2799bf](https://github.com/cjavdev/ted-demo-typescript/commit/e2799bf115da546d3e60935129fe4a7970839beb))
+
 ## 0.2.0 (2026-03-12)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/cjavdev/ted-demo-typescript/compare/v0.1.0...v0.2.0)
