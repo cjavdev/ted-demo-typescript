@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.1 (2026-03-28)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/cjavdev/ted-demo-typescript/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* **ci:** escape input path in publish-npm workflow ([023b3a5](https://github.com/cjavdev/ted-demo-typescript/commit/023b3a5b9c0137d5eb09304d36a3b77816e01a53))
+* **ci:** skip lint on metadata-only changes ([d34e317](https://github.com/cjavdev/ted-demo-typescript/commit/d34e317fb156bc783be9d2161e4425a535dbdddc))
+* **internal:** fix MCP server TS errors that occur with required client options ([6f68aed](https://github.com/cjavdev/ted-demo-typescript/commit/6f68aedc4667ae88d93ce99981665e9d108a1b63))
+* **internal:** make generated MCP servers compatible with Cloudflare worker environments ([8c27022](https://github.com/cjavdev/ted-demo-typescript/commit/8c2702250168973c7b37cf65d900e1d31df52eac))
+* **internal:** support custom-instructions-path flag in MCP servers ([170edba](https://github.com/cjavdev/ted-demo-typescript/commit/170edbafe7010bd6b3ad1f9f67b8867d13dfddc2))
+* **internal:** support local docs search in MCP servers ([e5c442d](https://github.com/cjavdev/ted-demo-typescript/commit/e5c442d1bdd64bb773872203a0b5761227cdc7bc))
+* **internal:** support x-stainless-mcp-client-envs header in MCP servers ([d7e409b](https://github.com/cjavdev/ted-demo-typescript/commit/d7e409b84dc223f28ddfe4443566b848c1af42a7))
+* **internal:** support x-stainless-mcp-client-permissions headers in MCP servers ([af5634b](https://github.com/cjavdev/ted-demo-typescript/commit/af5634b6aac74b5202e1d0585290bb158275139c))
+* **internal:** tweak CI branches ([e399527](https://github.com/cjavdev/ted-demo-typescript/commit/e39952735d1ca40a7ab4fc9305fe1509433077c6))
+* **internal:** update gitignore ([ad5faa4](https://github.com/cjavdev/ted-demo-typescript/commit/ad5faa40bdaf8cfddc1275525b2a4e6ebd2b9a12))
+* **internal:** update lockfile ([e2799bf](https://github.com/cjavdev/ted-demo-typescript/commit/e2799bf115da546d3e60935129fe4a7970839beb))
+
 ## 0.2.0 (2026-03-12)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/cjavdev/ted-demo-typescript/compare/v0.1.0...v0.2.0)
