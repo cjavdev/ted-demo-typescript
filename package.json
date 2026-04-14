@@ -1,6 +1,6 @@
 {
   "name": "ted-demo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The official TypeScript library for the Ted Demo API",
   "author": "Ted Demo <wave@cjav.dev>",
   "types": "dist/index.d.ts",
