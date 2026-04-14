@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.2.1 (2026-04-14)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/cjavdev/ted-demo-typescript/compare/v0.2.0...v0.2.1)
+
+### Bug Fixes
+
+* **internal:** gitignore generated `oidc` dir ([6d38fc8](https://github.com/cjavdev/ted-demo-typescript/commit/6d38fc8b6b731e88f08125a3b79c4e5634d811dd))
+
+
+### Chores
+
+* **ci:** escape input path in publish-npm workflow ([023b3a5](https://github.com/cjavdev/ted-demo-typescript/commit/023b3a5b9c0137d5eb09304d36a3b77816e01a53))
+* **ci:** skip lint on metadata-only changes ([d34e317](https://github.com/cjavdev/ted-demo-typescript/commit/d34e317fb156bc783be9d2161e4425a535dbdddc))
+* fix example snippet imports ([6257978](https://github.com/cjavdev/ted-demo-typescript/commit/62579788816a5f9e138b4dfa8972343803c5add0))
+* **internal:** codegen related update ([e3d5b14](https://github.com/cjavdev/ted-demo-typescript/commit/e3d5b14ea66c9e9572406aa3e1a60bf67e7ba437))
+* **internal:** fix MCP server import ordering ([3dcfcff](https://github.com/cjavdev/ted-demo-typescript/commit/3dcfcffb7df34a00a8e2aa3e1d08bd805ba8e1e0))
+* **internal:** fix MCP server TS errors that occur with required client options ([6f68aed](https://github.com/cjavdev/ted-demo-typescript/commit/6f68aedc4667ae88d93ce99981665e9d108a1b63))
+* **internal:** improve local docs search for MCP servers ([d15fa04](https://github.com/cjavdev/ted-demo-typescript/commit/d15fa04440dae253620431ab06354a5284996182))
+* **internal:** improve local docs search for MCP servers ([ae6c5a7](https://github.com/cjavdev/ted-demo-typescript/commit/ae6c5a776d1c5f6e46460620b5df9af03c186c42))
+* **internal:** make generated MCP servers compatible with Cloudflare worker environments ([8c27022](https://github.com/cjavdev/ted-demo-typescript/commit/8c2702250168973c7b37cf65d900e1d31df52eac))
+* **internal:** show error causes in MCP servers when running in local mode ([5f7f692](https://github.com/cjavdev/ted-demo-typescript/commit/5f7f6926cad00239715949bc23040573493af0da))
+* **internal:** support custom-instructions-path flag in MCP servers ([170edba](https://github.com/cjavdev/ted-demo-typescript/commit/170edbafe7010bd6b3ad1f9f67b8867d13dfddc2))
+* **internal:** support local docs search in MCP servers ([e5c442d](https://github.com/cjavdev/ted-demo-typescript/commit/e5c442d1bdd64bb773872203a0b5761227cdc7bc))
+* **internal:** support type annotations when running MCP in local execution mode ([8774347](https://github.com/cjavdev/ted-demo-typescript/commit/87743474954c2f16b2ed82258ee7b49fbab94c42))
+* **internal:** support x-stainless-mcp-client-envs header in MCP servers ([d7e409b](https://github.com/cjavdev/ted-demo-typescript/commit/d7e409b84dc223f28ddfe4443566b848c1af42a7))
+* **internal:** support x-stainless-mcp-client-permissions headers in MCP servers ([af5634b](https://github.com/cjavdev/ted-demo-typescript/commit/af5634b6aac74b5202e1d0585290bb158275139c))
+* **internal:** tweak CI branches ([e399527](https://github.com/cjavdev/ted-demo-typescript/commit/e39952735d1ca40a7ab4fc9305fe1509433077c6))
+* **internal:** update gitignore ([ad5faa4](https://github.com/cjavdev/ted-demo-typescript/commit/ad5faa40bdaf8cfddc1275525b2a4e6ebd2b9a12))
+* **internal:** update lockfile ([e2799bf](https://github.com/cjavdev/ted-demo-typescript/commit/e2799bf115da546d3e60935129fe4a7970839beb))
+* **mcp-server:** add support for session id, forward client info ([f0b3722](https://github.com/cjavdev/ted-demo-typescript/commit/f0b3722fd57a324bd6ba68af9fce1166273826a7))
+* **mcp-server:** increase local docs search result count from 5 to 10 ([899168c](https://github.com/cjavdev/ted-demo-typescript/commit/899168c2672935794d8f815c3ecc547f70c534a0))
+* **mcp-server:** log client info ([c0b0268](https://github.com/cjavdev/ted-demo-typescript/commit/c0b026831fe888a462d083e4fbd78fd44d3deffe))
+
+
+### Documentation
+
+* update examples ([9058a0c](https://github.com/cjavdev/ted-demo-typescript/commit/9058a0c68f8ca789963001cda2e9a5490344eea4))
+
 ## 0.2.0 (2026-03-12)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/cjavdev/ted-demo-typescript/compare/v0.1.0...v0.2.0)

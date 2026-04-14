@@ -31,6 +31,13 @@ export class Webhooks extends APIResource {
    *
    * Store the returned `secret` securely - you'll need it to verify webhook
    * signatures.
+   *
+   * @example
+   * ```ts
+   * const webhook = await client.webhooks.create({
+   *   url: 'https://example.com/webhooks',
+   * });
+   * ```
    */
   create(body: WebhookCreateParams, options?: RequestOptions): APIPromise<WebhookCreateResponse> {
     return this._client.post('/webhooks', { body, ...options });
@@ -38,6 +45,13 @@ export class Webhooks extends APIResource {
 
   /**
    * Get details of a specific webhook endpoint.
+   *
+   * @example
+   * ```ts
+   * const registeredWebhook = await client.webhooks.retrieve(
+   *   'webhook_id',
+   * );
+   * ```
    */
   retrieve(webhookID: string, options?: RequestOptions): APIPromise<RegisteredWebhook> {
     return this._client.get(path`/webhooks/${webhookID}`, options);
@@ -45,6 +59,11 @@ export class Webhooks extends APIResource {
 
   /**
    * Get a list of all registered webhook endpoints.
+   *
+   * @example
+   * ```ts
+   * const registeredWebhooks = await client.webhooks.list();
+   * ```
    */
   list(options?: RequestOptions): APIPromise<WebhookListResponse> {
     return this._client.get('/webhooks', options);
@@ -52,6 +71,11 @@ export class Webhooks extends APIResource {
 
   /**
    * Unregister a webhook endpoint. It will no longer receive events.
+   *
+   * @example
+   * ```ts
+   * const webhook = await client.webhooks.delete('webhook_id');
+   * ```
    */
   delete(webhookID: string, options?: RequestOptions): APIPromise<WebhookDeleteResponse> {
     return this._client.delete(path`/webhooks/${webhookID}`, options);
@@ -86,6 +110,13 @@ export class Webhooks extends APIResource {
    *     key = base64_decode(secret_without_prefix),
    *     message = "{timestamp}.{raw_json_payload}"
    * )
+   * ```
+   *
+   * @example
+   * ```ts
+   * const response = await client.webhooks.trigger({
+   *   event_type: 'match.completed',
+   * });
    * ```
    */
   trigger(body: WebhookTriggerParams, options?: RequestOptions): APIPromise<WebhookTriggerResponse> {
