@@ -1719,7 +1719,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       typescript: {
         method: 'client.teams.logo.upload',
         example:
-          "import TedDemo from 'ted-demo';\n\nconst client = new TedDemo({\n  apiKey: process.env['TED_DEMO_API_KEY'], // This is the default and can be omitted\n});\n\nconst fileUpload = await client.teams.logo.upload('team_id', {\n  file: fs.createReadStream('path/to/file'),\n});\n\nconsole.log(fileUpload.file_id);",
+          "import fs from 'fs';\nimport TedDemo from 'ted-demo';\n\nconst client = new TedDemo({\n  apiKey: process.env['TED_DEMO_API_KEY'], // This is the default and can be omitted\n});\n\nconst fileUpload = await client.teams.logo.upload('team_id', {\n  file: fs.createReadStream('path/to/file'),\n});\n\nconsole.log(fileUpload.file_id);",
       },
     },
   },
