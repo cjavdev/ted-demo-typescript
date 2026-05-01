@@ -1,5 +1,53 @@
 # Changelog
 
+## 0.3.0 (2026-05-01)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/cjavdev/ted-demo-typescript/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* support setting headers via env ([fe92c28](https://github.com/cjavdev/ted-demo-typescript/commit/fe92c28d0ce6f3ea9958af0b339f4b76f8cf2204))
+
+
+### Bug Fixes
+
+* **internal:** gitignore generated `oidc` dir ([6d38fc8](https://github.com/cjavdev/ted-demo-typescript/commit/6d38fc8b6b731e88f08125a3b79c4e5634d811dd))
+
+
+### Chores
+
+* avoid formatting file that gets changed during releases ([e8bb6b9](https://github.com/cjavdev/ted-demo-typescript/commit/e8bb6b99eba9df23550e3b0c27cd9e271a193d96))
+* **ci:** escape input path in publish-npm workflow ([023b3a5](https://github.com/cjavdev/ted-demo-typescript/commit/023b3a5b9c0137d5eb09304d36a3b77816e01a53))
+* **ci:** skip lint on metadata-only changes ([d34e317](https://github.com/cjavdev/ted-demo-typescript/commit/d34e317fb156bc783be9d2161e4425a535dbdddc))
+* fix example snippet imports ([6257978](https://github.com/cjavdev/ted-demo-typescript/commit/62579788816a5f9e138b4dfa8972343803c5add0))
+* **format:** run eslint and prettier separately ([9f84cb4](https://github.com/cjavdev/ted-demo-typescript/commit/9f84cb40c2e6c4aca449246ccd2d33ea05bd6760))
+* **internal:** codegen related update ([a1c6a02](https://github.com/cjavdev/ted-demo-typescript/commit/a1c6a02e461177e21eedc5d39f2cac5c06086db6))
+* **internal:** codegen related update ([e3d5b14](https://github.com/cjavdev/ted-demo-typescript/commit/e3d5b14ea66c9e9572406aa3e1a60bf67e7ba437))
+* **internal:** fix MCP server import ordering ([3dcfcff](https://github.com/cjavdev/ted-demo-typescript/commit/3dcfcffb7df34a00a8e2aa3e1d08bd805ba8e1e0))
+* **internal:** fix MCP server TS errors that occur with required client options ([6f68aed](https://github.com/cjavdev/ted-demo-typescript/commit/6f68aedc4667ae88d93ce99981665e9d108a1b63))
+* **internal:** improve local docs search for MCP servers ([d15fa04](https://github.com/cjavdev/ted-demo-typescript/commit/d15fa04440dae253620431ab06354a5284996182))
+* **internal:** improve local docs search for MCP servers ([ae6c5a7](https://github.com/cjavdev/ted-demo-typescript/commit/ae6c5a776d1c5f6e46460620b5df9af03c186c42))
+* **internal:** make generated MCP servers compatible with Cloudflare worker environments ([8c27022](https://github.com/cjavdev/ted-demo-typescript/commit/8c2702250168973c7b37cf65d900e1d31df52eac))
+* **internal:** more robust bootstrap script ([7fba281](https://github.com/cjavdev/ted-demo-typescript/commit/7fba28148db8b40919ff173e792035e3aab61962))
+* **internal:** show error causes in MCP servers when running in local mode ([5f7f692](https://github.com/cjavdev/ted-demo-typescript/commit/5f7f6926cad00239715949bc23040573493af0da))
+* **internal:** support custom-instructions-path flag in MCP servers ([170edba](https://github.com/cjavdev/ted-demo-typescript/commit/170edbafe7010bd6b3ad1f9f67b8867d13dfddc2))
+* **internal:** support local docs search in MCP servers ([e5c442d](https://github.com/cjavdev/ted-demo-typescript/commit/e5c442d1bdd64bb773872203a0b5761227cdc7bc))
+* **internal:** support type annotations when running MCP in local execution mode ([8774347](https://github.com/cjavdev/ted-demo-typescript/commit/87743474954c2f16b2ed82258ee7b49fbab94c42))
+* **internal:** support x-stainless-mcp-client-envs header in MCP servers ([d7e409b](https://github.com/cjavdev/ted-demo-typescript/commit/d7e409b84dc223f28ddfe4443566b848c1af42a7))
+* **internal:** support x-stainless-mcp-client-permissions headers in MCP servers ([af5634b](https://github.com/cjavdev/ted-demo-typescript/commit/af5634b6aac74b5202e1d0585290bb158275139c))
+* **internal:** tweak CI branches ([e399527](https://github.com/cjavdev/ted-demo-typescript/commit/e39952735d1ca40a7ab4fc9305fe1509433077c6))
+* **internal:** update gitignore ([ad5faa4](https://github.com/cjavdev/ted-demo-typescript/commit/ad5faa40bdaf8cfddc1275525b2a4e6ebd2b9a12))
+* **internal:** update lockfile ([e2799bf](https://github.com/cjavdev/ted-demo-typescript/commit/e2799bf115da546d3e60935129fe4a7970839beb))
+* **mcp-server:** add support for session id, forward client info ([f0b3722](https://github.com/cjavdev/ted-demo-typescript/commit/f0b3722fd57a324bd6ba68af9fce1166273826a7))
+* **mcp-server:** increase local docs search result count from 5 to 10 ([899168c](https://github.com/cjavdev/ted-demo-typescript/commit/899168c2672935794d8f815c3ecc547f70c534a0))
+* **mcp-server:** log client info ([c0b0268](https://github.com/cjavdev/ted-demo-typescript/commit/c0b026831fe888a462d083e4fbd78fd44d3deffe))
+* restructure docs search code ([50c6cf8](https://github.com/cjavdev/ted-demo-typescript/commit/50c6cf8146e5fb1ef10f20372a6219cdfa2cfff1))
+
+
+### Documentation
+
+* update examples ([9058a0c](https://github.com/cjavdev/ted-demo-typescript/commit/9058a0c68f8ca789963001cda2e9a5490344eea4))
+
 ## 0.2.0 (2026-03-12)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/cjavdev/ted-demo-typescript/compare/v0.1.0...v0.2.0)
